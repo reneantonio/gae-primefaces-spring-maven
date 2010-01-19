@@ -1,0 +1,61 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.prime.com.tr/ui">
+<head>
+<p:resources />
+</head>
+<body>
+
+<!--<p:editor />-->
+
+<a href="createBook.jsf">Create a book</a>
+
+<h:form prependId="false">
+
+	<p:dataTable id="books" value="#{searchBooksController.books}"
+		var="book" emptyMessage="No books found" rows="5" paginator="true">
+		<p:column>
+			<f:facet name="header">
+				<h:outputText value="Title" />
+			</f:facet>
+			<h:outputText value="#{book.title}" />
+		</p:column>
+		<p:column>
+			<f:facet name="header">
+				<h:outputText value="Author" />
+			</f:facet>
+			<h:outputText value="#{book.author}" />
+		</p:column>
+
+<!--		<p:column>-->
+<!--			<f:facet name="header">-->
+<!--				<h:outputText value="" />-->
+<!--			</f:facet>-->
+<!--			<p:commandLink update="View" oncomplete="detailsDialog.show();"-->
+<!--				title="detailsTable">-->
+<!--				<p:graphicImage value="/images/zoom.png" style="border:0px;" />-->
+<!--				<f:setPropertyActionListener value="#{book}"-->
+<!--					target="#{searchBooksController.book}" />-->
+<!--			</p:commandLink>-->
+<!--		</p:column>-->
+
+	</p:dataTable>
+
+</h:form>
+
+
+<!--<p:dialog header="Book Details" widgetVar="detailsDialog"-->
+<!--	fixedCenter="true">-->
+<!--	<h:panelGrid id="detailsTable" columns="2" width="300px">-->
+<!--		<h:outputText value="Title" />-->
+<!--		<h:outputText value="#{searchBooksController.book.title}" />-->
+<!---->
+<!--		<h:outputText value="Author" />-->
+<!--		<h:outputText value="#{searchBooksController.book.author}" />-->
+<!---->
+<!--	</h:panelGrid>-->
+<!--</p:dialog>-->
+
+</body>
+</html>

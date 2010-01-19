@@ -1,0 +1,50 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.prime.com.tr/ui">
+<head>
+<p:resources />
+</head>
+<body>
+
+<a href="bookList.jsf">Show Book List</a>
+<h:form prependId="false">
+	<p:panel id="panel" header="New Book">
+		<p:growl showDetail="true" />
+
+		<h:panelGrid columns="2" columnClasses="label,value" styleClass="grid">
+			<h:outputLabel for="title" value="Title" />
+			<h:inputText id="title" value="#{createBook.book.title}"
+				required="true" requiredMessage="Title is required"
+				validatorMessage="Max length is 40">
+				<f:validateLength maximum="40" />
+			</h:inputText>
+
+			<h:outputLabel for="author" value="Author" />
+			<h:inputText id="author" value="#{createBook.book.author}"
+				required="true" requiredMessage="Author is required"
+				converterMessage="Only numbers please"
+				validatorMessage="Max length is 30">
+				<f:validateLength maximum="30" />
+			</h:inputText>
+
+			<h:panelGroup>
+				<h:panelGrid columns="2">
+					<p:commandButton value="Save" actionListener="#{createBook.save}"
+						async="true" update="panel">
+						<p:confirmDialog yesLabel="Save" noLabel="Cancel"
+							message="Are you sure?" header="Confirm"
+							severity="warn" fixedCenter="true" draggable="false" />
+					</p:commandButton>
+					<p:commandButton value="Reset" type="reset" />
+				</h:panelGrid>
+			</h:panelGroup>
+
+		</h:panelGrid>
+	</p:panel>
+
+</h:form>
+
+
+</body>
+</html>
