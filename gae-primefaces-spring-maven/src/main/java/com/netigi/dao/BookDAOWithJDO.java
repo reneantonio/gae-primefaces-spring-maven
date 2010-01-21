@@ -24,6 +24,15 @@ public class BookDAOWithJDO implements BookDAO {
 		}
 	}
 	
+	public void delete(MyBook book){
+		PersistenceManager pm = pmfInstance.getPersistenceManager();
+		try {
+			pm.deletePersistent(book);
+		} finally {
+			pm.close();
+		}
+	}
+	
 	@SuppressWarnings("unchecked")
 	public List<MyBook> findAll(){
 		PersistenceManager pm = pmfInstance.getPersistenceManager();

@@ -7,6 +7,8 @@ import com.netigi.domain.MyBook;
 public interface BookDAO {
 
 	public void persist(MyBook book);
+	
+	public void delete(MyBook book);
 
 	public List<MyBook> findAll();
 
